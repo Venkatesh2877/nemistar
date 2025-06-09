@@ -6711,7 +6711,7 @@ label {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   max-width: 350px;
 }
 .cs_iconbox.cs_style_7 .cs_iconbox_icon {
