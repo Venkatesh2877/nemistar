@@ -54,8 +54,8 @@
 ----------------------------------------------------------------*/
 :root {
   --white-color: #fff;
-  --heading-color: #191919;
-  --body-color: #555;
+  --heading-color: #153a23;
+  --body-color: #144f2a;
   --accent-color: #4baf47;
   --dark-blue-color: #046d3a;
   --gray-color: #f4f3ef;
@@ -2737,6 +2737,58 @@ label {
   position: relative;
   z-index: 10;
   margin-top: -110px;
+}
+
+.cs_glassy_effect {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cs_glassy_effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+}
+
+.cs_glassy_effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+}
+
+.cs_glassy_effect .cs_funfact_number {
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+.cs_glassy_effect .cs_funfact_title {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .cs_funfact_1_list {
