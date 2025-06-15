@@ -54,8 +54,8 @@
 ----------------------------------------------------------------*/
 :root {
   --white-color: #fff;
-  --heading-color: #153a23;
-  --body-color: #144f2a;
+  --heading-color: #205635;
+  --body-color: #296c42;
   --accent-color: #4baf47;
   --dark-blue-color: #046d3a;
   --gray-color: #f4f3ef;
@@ -4783,7 +4783,7 @@ label {
   .cs_main_header_center,
   .cs_top_header_center {
     position: absolute;
-    left: 50%;
+    left: 60%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
