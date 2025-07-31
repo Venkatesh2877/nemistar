@@ -4577,7 +4577,7 @@ label {
   opacity: 0;
 }
 .cs_side_header .cs_side_header_in {
-  width: 500px;
+  width: 100%;
   height: 100vh;
   background-color: var(--white-color);
   -webkit-box-flex: 0;
@@ -8757,8 +8757,6 @@ html .ui-button.ui-state-disabled:active {
 canvas {
   width: 100%;
   height: 500px;
-  padding: 0;
-  margin: 0;
   overflow: hidden;
   background-color: white;
 }

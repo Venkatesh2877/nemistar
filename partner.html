@@ -248,7 +248,7 @@
               <div class="cs_height_93 cs_height_lg_80"></div>
               <div class="cs_section_heading cs_style_1 d-flex flex-column align-items-center justify-content-center">
                 <h3 class="cs_fs_21 cs_semibold cs_accent_color cs_mb_13 wow fadeIn" data-wow-delay="0.5s">Let's Work Together</h3>
-                <h2 class="cs_fs_51 mb-10 wow pulse" data-wow-delay="0.8s">Partner with NEMISTAR</h2>
+                <h2 class="cs_fs_51 mb-10 wow pulse text-center" data-wow-delay="0.8s">Partner with NEMISTAR</h2>
                 <p class=" text-center wow fadeIn" data-wow-delay="1s">
                   Nemistar has earned a recognized certification for consistent compliance with CPCB and International Organization for Standardization, demonstrating the company’s commitment to environmental sustainability. 
                 </p>
@@ -485,17 +485,24 @@
         canvas.height = image.height;
 
         var ctx = canvas.getContext("2d");
-        ctx.drawImage(image, 0, 0);
+        ctx.drawImage(image, offsetMap() , 0);
 
         return ctx.getImageData(0, 0, image.width, image.height);
       };
 
+      function offsetMap() {
+        if (window.innerWidth < 768) {
+          return -80;
+        }
+        return 0;
+      }
+
       function isInTargetCountry(x, y, imageWidth, imageHeight) {
         const locations = [
-          { name: "Australia", xMin: 340, xMax: 420, yMin: 210, yMax: 270 },
-          { name: "Dubai", xMin: 270, xMax: 294, yMin: 160, yMax: 179, exclude: [{x: 293, y: 160,}, {x: 292, y: 160,}, {x: 291, y: 160,}] },
-          { name: "India", xMin: 305, xMax: 335, yMin: 150, yMax: 190 },
-          { name: "Spain", xMin: 200, xMax: 224, yMin: 136, yMax: 146 }
+          { name: "Australia", xMin: 340 + offsetMap(), xMax: 420 + offsetMap(), yMin: 210, yMax: 270 },
+          { name: "Dubai", xMin: 270 + offsetMap(), xMax: 294 + offsetMap(), yMin: 160 , yMax: 179  , exclude: [{x: 293, y: 160,}, {x: 292, y: 160,}, {x: 291, y: 160,}] },
+          { name: "India", xMin: 305 + offsetMap(), xMax: 335 + offsetMap(), yMin: 150, yMax: 190 },
+          { name: "Spain", xMin: 200 + offsetMap(), xMax: 224 + offsetMap(), yMin: 136, yMax: 146 }
         ];
 
         return locations.some(loc =>{
@@ -516,19 +523,19 @@
       }
 
       const circleSize = 64;
-const circleCanvas = document.createElement('canvas');
-circleCanvas.width = circleSize;
-circleCanvas.height = circleSize;
-const ctx = circleCanvas.getContext('2d');
+      const circleCanvas = document.createElement('canvas');
+      circleCanvas.width = circleSize;
+      circleCanvas.height = circleSize;
+      const ctx = circleCanvas.getContext('2d');
 
-ctx.beginPath();
-ctx.arc(circleSize / 2, circleSize / 2, circleSize / 2, 0, Math.PI * 2);
-ctx.fillStyle = '#ffffff'; // white circle (color will come from vertexColors)
-ctx.fill();
+      ctx.beginPath();
+      ctx.arc(circleSize / 2, circleSize / 2, circleSize / 2, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff'; // white circle (color will come from vertexColors)
+      ctx.fill();
 
-// Create texture from canvas
-const circleTexture = new THREE.Texture(circleCanvas);
-circleTexture.needsUpdate = true;
+      // Create texture from canvas
+      const circleTexture = new THREE.Texture(circleCanvas);
+      circleTexture.needsUpdate = true;
 
       var drawTheMap = function() {
         var geometry = new THREE.Geometry();
@@ -585,7 +592,9 @@ circleTexture.needsUpdate = true;
         scene = new THREE.Scene();
 
         camera = new THREE.PerspectiveCamera(50, ww / wh, 0.1, 10000);
-        camera.position.set(-100, 0, 380);
+        camera.position.set(0, 0, window.innerHeight * 0.4);
+        // camera.position.set(-100, 0, window.innerWidth < 800 ? window.innerWidth : window.innerWidth * 0.18);
+
         camera.lookAt(centerVector);
         scene.add(camera);
 
@@ -633,8 +642,8 @@ circleTexture.needsUpdate = true;
         }
 
         particles.geometry.verticesNeedUpdate = true;
-        camera.position.x = Math.sin(a / 5000) * 100;
-        camera.lookAt(centerVector);
+        //camera.position.x = Math.sin(a / 5000) * 100;
+        //camera.lookAt(centerVector);
         renderer.render(scene, camera);
       };
 
