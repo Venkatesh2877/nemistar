@@ -2155,7 +2155,7 @@ label {
   background-color: #fff;
 }
 .cs_accordians.cs_style_1 .cs_accordian.active .cs_accordian_head {
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .cs_accordians.cs_style_1 .cs_accordian.active .cs_accordian_toggle {
   -webkit-transform: rotate(180deg);
@@ -8752,4 +8752,13 @@ html .ui-button.ui-state-disabled:active {
       height: 5rem;
     }
   }
+}
+
+canvas {
+  width: 100%;
+  height: 500px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: white;
 }

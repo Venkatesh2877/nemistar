@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
   </head>
   <body>
     <!-- Start Preloader -->
@@ -204,7 +206,7 @@
             </div>
             <h3 class="cs_fs_28 cs_bold" style="color: #153a23; margin-bottom: 18px;">Trusted Sustainable Solutions</h3>
             <div style="color: #144f2a; font-size: 18px; line-height: 1.6;">
-              With over 35 years of experience in polymers and more than 15 years in biopolymers, we deliver reliable, eco-friendly biopolymer products that meet global environmental standards and market needs.
+              With over 15 years of experience in the polymers and biopolymers, we deliver reliable, eco-friendly biopolymer products that meet global environmental standards and market needs.
             </div>
           </div>
         </div>
@@ -215,7 +217,8 @@
             </div>
             <h3 class="cs_fs_28 cs_bold" style="color: #153a23; margin-bottom: 18px;">Comprehensive Technical and Production Support</h3>
             <div style="color: #144f2a; font-size: 18px; line-height: 1.6;">
-            Our in-house R&D provides various resin and tailored innovations for diverse applications, ensuring superior product performance and market adaptability.            </div>
+            Our in-house R&D team provides various tailored innovations for diverse applications, ensuring superior product quality, performance and market adaptability.
+            </div>
           </div>
         </div>
 
@@ -226,7 +229,7 @@
             </div>
             <h3 class="cs_fs_28 cs_bold" style="color: #153a23; margin-bottom: 18px;">Global Market Opportunities</h3>
             <div style="color: #144f2a; font-size: 18px; line-height: 1.6;">
-              As our products meet global standards, proven by international certifications, they are ready to be marketed in your country.
+            With internationally compliant standards proven by our international certifications, scalable production, and sustainable materials, we help brands across the globe reduce plastic waste and meet evolving environmental regulations.            
             </div>
           </div>
       </div>
@@ -246,14 +249,19 @@
               <div class="cs_section_heading cs_style_1 d-flex flex-column align-items-center justify-content-center">
                 <h3 class="cs_fs_21 cs_semibold cs_accent_color cs_mb_13 wow fadeIn" data-wow-delay="0.5s">Let's Work Together</h3>
                 <h2 class="cs_fs_51 mb-10 wow pulse" data-wow-delay="0.8s">Partner with NEMISTAR</h2>
-                <p class=" text-center wow fadeIn" data-wow-delay="1s">Nemistar has earned a recognized certification for consistent compliance with SNI Ekolabel (Indonesian National Standard Ecolabel), demonstrating the company's commitment to environmental sustainability. Join us in shaping a greener future.</p>
+                <p class=" text-center wow fadeIn" data-wow-delay="1s">
+                  Nemistar has earned a recognized certification for consistent compliance with CPCB and International Organization for Standardization, demonstrating the company’s commitment to environmental sustainability. 
+                </p>
+                 <p class=" text-center wow fadeIn" data-wow-delay="2s">
+                    By partnering with us, you align your brand with innovation, responsibility, and action. Together, we can drive meaningful change—one compostable bag at a time.                </p>
               </div>
             </div>
           </div>
         
         </div>
-        <img src="assets/img/partner/worldmap-background-design.png" alt="Partner with NEMISTAR" class="w-100 object-fit-cover wow fadeInUpBig" data-wow-delay="1.2s">
+        <!-- <img src="assets/img/partner/worldmap-background-design.png" alt="Partner with NEMISTAR" class="w-100 object-fit-cover wow fadeInUpBig" data-wow-delay="1.2s"> -->
       </div>
+      <canvas id="map"></canvas>
       <div class="cs_height_0 cs_height_lg_80"></div>
     </section>
 
@@ -461,5 +469,176 @@
     <script src="assets/js/gsap.min.js"></script>
    <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/three.min.js"></script>
+    <script>
+      var renderer, scene, camera, ww, wh, particles;
+      var imagedata;
+      ww = window.innerWidth;
+      wh = window.innerHeight;
+
+      var centerVector = new THREE.Vector3(0, 0, 0);
+      var previousTime = 0;
+
+      var getImageData = function(image) {
+        var canvas = document.createElement("canvas");
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(image, 0, 0);
+
+        return ctx.getImageData(0, 0, image.width, image.height);
+      };
+
+      function isInTargetCountry(x, y, imageWidth, imageHeight) {
+        const locations = [
+          { name: "Australia", xMin: 340, xMax: 420, yMin: 210, yMax: 270 },
+          { name: "Dubai", xMin: 270, xMax: 294, yMin: 160, yMax: 179, exclude: [{x: 293, y: 160,}, {x: 292, y: 160,}, {x: 291, y: 160,}] },
+          { name: "India", xMin: 305, xMax: 335, yMin: 150, yMax: 190 },
+          { name: "Spain", xMin: 200, xMax: 224, yMin: 136, yMax: 146 }
+        ];
+
+        return locations.some(loc =>{
+          // x >= loc.xMin && x <= loc.xMax && y >= loc.yMin && y <= loc.yMax
+            // Check if it's a manually included pixel first
+    const explicitlyIncluded = loc.include?.some(p => p.x === x && p.y === y);
+    if (explicitlyIncluded) return true;
+
+    // Otherwise check bounding box
+    const inBox = x >= loc.xMin && x <= loc.xMax && y >= loc.yMin && y <= loc.yMax;
+    if (!inBox) return false;
+
+    // If it's in box, but explicitly excluded, return false
+    const explicitlyExcluded = loc.exclude?.some(p => p.x === x && p.y === y);
+    return !explicitlyExcluded;
+    } 
+        );
+      }
+
+      const circleSize = 64;
+const circleCanvas = document.createElement('canvas');
+circleCanvas.width = circleSize;
+circleCanvas.height = circleSize;
+const ctx = circleCanvas.getContext('2d');
+
+ctx.beginPath();
+ctx.arc(circleSize / 2, circleSize / 2, circleSize / 2, 0, Math.PI * 2);
+ctx.fillStyle = '#ffffff'; // white circle (color will come from vertexColors)
+ctx.fill();
+
+// Create texture from canvas
+const circleTexture = new THREE.Texture(circleCanvas);
+circleTexture.needsUpdate = true;
+
+      var drawTheMap = function() {
+        var geometry = new THREE.Geometry();
+        var colors = [];
+        var material = new THREE.PointsMaterial({
+          size: 3,
+          vertexColors: true,
+          sizeAttenuation: false,
+          map: circleTexture
+
+          
+        });
+
+        for (var y = 0, y2 = imagedata.height; y < y2; y += 2) {
+          for (var x = 0, x2 = imagedata.width; x < x2; x += 2) {
+            if (imagedata.data[(x * 4 + y * 4 * imagedata.width) + 3] > 128) {
+              var vertex = new THREE.Vector3();
+              vertex.x = Math.random() * 1000 - 500;
+              vertex.y = Math.random() * 1000 - 500;
+              vertex.z = -Math.random() * 500;
+
+              vertex.destination = {
+                x: x - imagedata.width / 2,
+                y: -y + imagedata.height / 2,
+                z: 0
+              };
+
+              vertex.speed = Math.random() / 200 + 0.015;
+              geometry.vertices.push(vertex);
+
+              var isHighlighted = isInTargetCountry(x, y, imagedata.width, imagedata.height);
+              var color = new THREE.Color(isHighlighted ? '#4baf47' : '#313742');
+              colors.push(color);
+            }
+          }
+        }
+        geometry.colors = colors;
+        particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        requestAnimationFrame(render);
+      };
+
+      var init = function() {
+        THREE.ImageUtils.crossOrigin = '';
+        renderer = new THREE.WebGLRenderer({
+          canvas: document.getElementById("map"),
+          antialias: true,
+          // alpha: true
+        });
+        renderer.setSize(ww, wh);
+        renderer.setClearColor(0xf6fbf6);
+
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera(50, ww / wh, 0.1, 10000);
+        camera.position.set(-100, 0, 380);
+        camera.lookAt(centerVector);
+        scene.add(camera);
+
+        texture = THREE.ImageUtils.loadTexture("https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/transparentMap.png", undefined, function() {
+          imagedata = getImageData(texture.image);
+          drawTheMap();
+        });
+
+        window.addEventListener('resize', onResize, false);
+      };
+
+      var onResize = function() {
+        ww = window.innerWidth;
+        wh = window.innerHeight;
+        renderer.setSize(ww, wh);
+        camera.aspect = ww / wh;
+        camera.updateProjectionMatrix();
+      };
+
+      var render = function(a) {
+        requestAnimationFrame(render);
+
+        for (var i = 0, j = particles.geometry.vertices.length; i < j; i++) {
+          var particle = particles.geometry.vertices[i];
+          particle.x += (particle.destination.x - particle.x) * particle.speed;
+          particle.y += (particle.destination.y - particle.y) * particle.speed;
+          particle.z += (particle.destination.z - particle.z) * particle.speed;
+        }
+
+        if (a - previousTime > 100) {
+          var index = Math.floor(Math.random() * particles.geometry.vertices.length);
+          var particle1 = particles.geometry.vertices[index];
+          var particle2 = particles.geometry.vertices[particles.geometry.vertices.length - index];
+          TweenMax.to(particle1, Math.random() * 2 + 1, {
+            x: particle2.x,
+            y: particle2.y,
+            ease: Power2.easeInOut
+          });
+          TweenMax.to(particle2, Math.random() * 2 + 1, {
+            x: particle1.x,
+            y: particle1.y,
+            ease: Power2.easeInOut
+          });
+          previousTime = a;
+        }
+
+        particles.geometry.verticesNeedUpdate = true;
+        camera.position.x = Math.sin(a / 5000) * 100;
+        camera.lookAt(centerVector);
+        renderer.render(scene, camera);
+      };
+
+      init();
+    </script>
   </body>
 </html>

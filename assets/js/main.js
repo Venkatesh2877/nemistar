@@ -369,25 +369,48 @@
   /*--------------------------------------------------------------
     11. Accordian
   --------------------------------------------------------------*/
+  // function accordian() {
+  //   $(".cs_accordian").children(".cs_accordian_body").hide();
+  //   $(".cs_accordian.active").children(".cs_accordian_body").show();
+  //   $(".cs_accordian_head").on("click", function () {
+  //     $(this)
+  //       .parent(".cs_accordian")
+  //       .siblings()
+  //       .children(".cs_accordian_body")
+  //       .slideUp(250);
+  //     $(this).siblings().slideDown(250);
+  //     $(this)
+  //       .parent()
+  //       .parent()
+  //       .siblings()
+  //       .find(".cs_accordian_body")
+  //       .slideUp(250);
+  //     /* Accordian Active Class */
+  //     $(this).parents(".cs_accordian").addClass("active");
+  //     $(this).parent(".cs_accordian").siblings().removeClass("active");
+  //   });
+  // }
+
   function accordian() {
     $(".cs_accordian").children(".cs_accordian_body").hide();
     $(".cs_accordian.active").children(".cs_accordian_body").show();
+
     $(".cs_accordian_head").on("click", function () {
-      $(this)
-        .parent(".cs_accordian")
-        .siblings()
-        .children(".cs_accordian_body")
-        .slideUp(250);
-      $(this).siblings().slideDown(250);
-      $(this)
-        .parent()
-        .parent()
-        .siblings()
-        .find(".cs_accordian_body")
-        .slideUp(250);
-      /* Accordian Active Class */
-      $(this).parents(".cs_accordian").addClass("active");
-      $(this).parent(".cs_accordian").siblings().removeClass("active");
+      const $accordian = $(this).parent(".cs_accordian");
+      const isActive = $accordian.hasClass("active");
+
+      if (isActive) {
+        // 🔄 Toggle off if already active
+        $accordian.removeClass("active");
+        $accordian.children(".cs_accordian_body").slideUp(250);
+      } else {
+        // ✅ Activate the clicked one and deactivate others
+        $(".cs_accordian").removeClass("active");
+        $(".cs_accordian_body").slideUp(250);
+
+        $accordian.addClass("active");
+        $accordian.children(".cs_accordian_body").slideDown(250);
+      }
     });
   }
 
