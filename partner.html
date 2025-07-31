@@ -485,7 +485,7 @@
         canvas.height = image.height;
 
         var ctx = canvas.getContext("2d");
-        ctx.drawImage(image, offsetMap() , 0);
+        ctx.drawImage(image, offsetMap(), 0);
 
         return ctx.getImageData(0, 0, image.width, image.height);
       };
@@ -507,19 +507,18 @@
 
         return locations.some(loc =>{
           // x >= loc.xMin && x <= loc.xMax && y >= loc.yMin && y <= loc.yMax
-            // Check if it's a manually included pixel first
-    const explicitlyIncluded = loc.include?.some(p => p.x === x && p.y === y);
-    if (explicitlyIncluded) return true;
+          // Check if it's a manually included pixel first
+          const explicitlyIncluded = loc.include?.some(p => p.x === x && p.y === y);
+          if (explicitlyIncluded) return true;
 
-    // Otherwise check bounding box
-    const inBox = x >= loc.xMin && x <= loc.xMax && y >= loc.yMin && y <= loc.yMax;
-    if (!inBox) return false;
+          // Otherwise check bounding box
+          const inBox = x >= loc.xMin && x <= loc.xMax && y >= loc.yMin && y <= loc.yMax;
+          if (!inBox) return false;
 
-    // If it's in box, but explicitly excluded, return false
-    const explicitlyExcluded = loc.exclude?.some(p => p.x === x && p.y === y);
-    return !explicitlyExcluded;
-    } 
-        );
+          // If it's in box, but explicitly excluded, return false
+          const explicitlyExcluded = loc.exclude?.some(p => p.x === x && p.y === y);
+          return !explicitlyExcluded;
+        });
       }
 
       const circleSize = 64;
@@ -537,6 +536,46 @@
       const circleTexture = new THREE.Texture(circleCanvas);
       circleTexture.needsUpdate = true;
 
+      // var drawTheMap = function() {
+      //   var geometry = new THREE.Geometry();
+      //   var colors = [];
+      //   var material = new THREE.PointsMaterial({
+      //     size: 3,
+      //     vertexColors: true,
+      //     sizeAttenuation: false,
+      //     map: circleTexture
+      //   });
+
+      //   for (var y = 0, y2 = imagedata.height; y < y2; y += 2) {
+      //     for (var x = 0, x2 = imagedata.width; x < x2; x += 2) {
+      //       if (imagedata.data[(x * 4 + y * 4 * imagedata.width) + 3] > 128) {
+      //         var vertex = new THREE.Vector3();
+      //         vertex.x = Math.random() * 1000 - 500;
+      //         vertex.y = Math.random() * 1000 - 500;
+      //         vertex.z = -Math.random() * 500;
+
+      //         vertex.destination = {
+      //           x: x - imagedata.width / 2,
+      //           y: -y + imagedata.height / 2,
+      //           z: 0
+      //         };
+
+      //         vertex.speed = Math.random() / 200 + 0.015;
+      //         geometry.vertices.push(vertex);
+
+      //         var isHighlighted = isInTargetCountry(x, y, imagedata.width, imagedata.height);
+      //         var color = new THREE.Color(isHighlighted ? '#4baf47' : '#313742');
+      //         colors.push(color);
+      //       }
+      //     }
+      //   }
+      //   geometry.colors = colors;
+      //   particles = new THREE.Points(geometry, material);
+      //   scene.add(particles);
+
+      //   requestAnimationFrame(render);
+      // };
+
       var drawTheMap = function() {
         var geometry = new THREE.Geometry();
         var colors = [];
@@ -545,8 +584,6 @@
           vertexColors: true,
           sizeAttenuation: false,
           map: circleTexture
-
-          
         });
 
         for (var y = 0, y2 = imagedata.height; y < y2; y += 2) {
@@ -564,14 +601,16 @@
               };
 
               vertex.speed = Math.random() / 200 + 0.015;
-              geometry.vertices.push(vertex);
 
               var isHighlighted = isInTargetCountry(x, y, imagedata.width, imagedata.height);
-              var color = new THREE.Color(isHighlighted ? '#4baf47' : '#313742');
-              colors.push(color);
+              vertex.initialColor = new THREE.Color(isHighlighted ? '#4baf47' : '#313742');
+
+              geometry.vertices.push(vertex);
+              colors.push(vertex.initialColor.clone());
             }
           }
         }
+
         geometry.colors = colors;
         particles = new THREE.Points(geometry, material);
         scene.add(particles);
@@ -593,7 +632,6 @@
 
         camera = new THREE.PerspectiveCamera(50, ww / wh, 0.1, 10000);
         camera.position.set(0, 0, window.innerHeight * 0.4);
-        // camera.position.set(-100, 0, window.innerWidth < 800 ? window.innerWidth : window.innerWidth * 0.18);
 
         camera.lookAt(centerVector);
         scene.add(camera);
@@ -614,16 +652,62 @@
         camera.updateProjectionMatrix();
       };
 
+      // var render = function(a) {
+      //   requestAnimationFrame(render);
+
+      //   for (var i = 0, j = particles.geometry.vertices.length; i < j; i++) {
+      //     var particle = particles.geometry.vertices[i];
+      //     particle.x += (particle.destination.x - particle.x) * particle.speed;
+      //     particle.y += (particle.destination.y - particle.y) * particle.speed;
+      //     particle.z += (particle.destination.z - particle.z) * particle.speed;
+      //     particle.color = new THREE.Color('#4baf47');
+      //   }
+
+      //   if (a - previousTime > 100) {
+      //     var index = Math.floor(Math.random() * particles.geometry.vertices.length);
+      //     var particle1 = particles.geometry.vertices[index];
+      //     var particle2 = particles.geometry.vertices[particles.geometry.vertices.length - index];
+      //     TweenMax.to(particle1, Math.random() * 2 + 1, {
+      //       x: particle2.x,
+      //       y: particle2.y,
+      //       ease: Power2.easeInOut
+      //     });
+      //     TweenMax.to(particle2, Math.random() * 2 + 1, {
+      //       x: particle1.x,
+      //       y: particle1.y,
+      //       ease: Power2.easeInOut
+      //     });
+      //     previousTime = a;
+      //   }
+
+      //   particles.geometry.verticesNeedUpdate = true;
+      //   //camera.position.x = Math.sin(a / 5000) * 100;
+      //   //camera.lookAt(centerVector);
+      //   renderer.render(scene, camera);
+      // };
+
       var render = function(a) {
         requestAnimationFrame(render);
 
         for (var i = 0, j = particles.geometry.vertices.length; i < j; i++) {
           var particle = particles.geometry.vertices[i];
+
+          // Move toward destination
           particle.x += (particle.destination.x - particle.x) * particle.speed;
           particle.y += (particle.destination.y - particle.y) * particle.speed;
           particle.z += (particle.destination.z - particle.z) * particle.speed;
+
+          // Determine if it's moving
+          const dx = Math.abs(particle.destination.x - particle.x);
+          const dy = Math.abs(particle.destination.y - particle.y);
+          const dz = Math.abs(particle.destination.z - particle.z);
+          const isMoving = dx > 0.1 || dy > 0.1 || dz > 0.1;
+
+          // Set color
+          particles.geometry.colors[i].set(isMoving ? '#4baf47' : particle.initialColor);
         }
 
+        // Occasionally swap two particles' destinations
         if (a - previousTime > 100) {
           var index = Math.floor(Math.random() * particles.geometry.vertices.length);
           var particle1 = particles.geometry.vertices[index];
@@ -641,11 +725,11 @@
           previousTime = a;
         }
 
+        particles.geometry.colorsNeedUpdate = true;
         particles.geometry.verticesNeedUpdate = true;
-        //camera.position.x = Math.sin(a / 5000) * 100;
-        //camera.lookAt(centerVector);
         renderer.render(scene, camera);
       };
+
 
       init();
     </script>
