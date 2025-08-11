@@ -4783,7 +4783,7 @@ label {
   .cs_main_header_center,
   .cs_top_header_center {
     position: absolute;
-    left: 60%;
+    left: 55%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -4809,7 +4809,7 @@ label {
     align-items: center;
     height: 100%;
     width: 100%;
-    max-width: calc(100% - 300px);
+    /* max-width: calc(100% - 300px); */
   }
   .cs_site_header.cs_style_1 .cs_main_header_left {
     height: 100%;
@@ -4842,7 +4842,7 @@ label {
     height: inherit;
   }
   .cs_nav .cs_nav_list > li {
-    margin-right: 40px;
+    margin-right: 25px;
     height: inherit;
   }
   .cs_nav .cs_nav_list > li:last-child {
@@ -6616,7 +6616,7 @@ label {
 }
 
 .cs_iconbox.cs_style_3 {
-  padding: 50px 22px;
+  padding: 50px 10px;
 }
 .cs_iconbox.cs_style_3 .cs_iconbox_icon {
   display: inline-block;

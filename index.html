@@ -49,13 +49,16 @@
                   <li class="menu-item-has-children">
                     <a href="about.html">About</a>
                     <ul>
-                      <li><a href="#">Nemister at a glance</a></li>
+                      <li><a href="about.html">Nemister at a glance</a></li>
+
                       <li><a href="#">Certifications</a></li>
-                      <li><a href="#faq">FAQ</a></li>
+                      <li><a href="index.html#faq">FAQ</a></li>
                      </ul>
                   </li>
                   <li><a href="services.html">Products</a></li>
                   <li><a href="blog.html">Blog</a></li>
+                  <li><a href="sustainability.html">Sustainability</a></li>
+
                   <li><a href="contact.html">Contact</a></li>
                    <li class="d-flex flex-column justify-content-center align-items-start align-items-lg-center px-3 pt-1">
                     <div class="text-white">Looking for More Info?</div>
@@ -384,7 +387,7 @@
     <section class="cs_half_bg_wrap" id="services">
       <div class="cs_height_145 cs_height_lg_75"></div>
       <div class="cs_half_bg_top cs_accent_bg cs_bg_filed" data-src="assets/img/nature/service_bg.svg"></div>
-      <div class="container-fluid">
+      <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
         <div class="cs_section_heading cs_style_1 text-center">
           <h3 class="cs_fs_21 cs_semibold cs_white_color cs_mb_13 wow fadeIn" data-wow-duration="0.8s" data-wow-delay="0.25s">Products</h3>
           <h2 class="cs_fs_51 cs_mb_9 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.25s">Shop smarter, live Greener.</h2>
@@ -596,10 +599,9 @@
         </div>
       </div>
     </div>
-    <div class="cs_height_125 cs_height_lg_60"></div>
     <!-- End Funfact  -->
     <!-- Start Faq Section -->
-    <section class="cs_gray_bg_2" id="faq" data-scroll-to="faq" style="scroll-margin-top: 200px;">
+    <section class="cs_gray_bg_2" id="faq">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -782,11 +784,13 @@ Using compostable bags is a simple yet powerful way to live more sustainably and
                   <div class="cs_testimonial_avatar cs_mb_42">
                     <img src="assets/img/nature/avatar_img_1.png" alt="Avatar">
                     <div class="cs_testimonial_avatar_right">
-                      <h3 class="cs_fs_21 cs_semibold cs_mb_2">Angrew Bolar</h3>
-                      <p class="mb-0 cs_accent_color">Volunteer</p>
+                      <h3 class="cs_fs_21 cs_semibold cs_mb_2">Yash J</h3>
+                      <p class="mb-0 cs_accent_color">Co - founder : CISTRO INC</p>
                     </div>
                   </div>
-                  <blockquote class="cs_fs_18 cs_mb_45">The resources have been a tremendous help in making my lifestyle more eco-friendly. Plus, the campaigns are a fantastic way to get involved. Keep up the excellent work!</blockquote>
+                  <blockquote class="cs_fs_18 cs_mb_45">
+                    Nemistar Biopolymers stands out with their dedicated compostable unit, unmatched quality, and service you can count on—truly a rare partner in sustainability.
+                  </blockquote>
                   <div class="cs_rating cs_accent_color" data-rating="5">
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
@@ -808,11 +812,13 @@ Using compostable bags is a simple yet powerful way to live more sustainably and
                   <div class="cs_testimonial_avatar cs_mb_42">
                     <img src="assets/img/nature/avatar_img_2.png" alt="Avatar">
                     <div class="cs_testimonial_avatar_right">
-                      <h3 class="cs_fs_21 cs_semibold cs_mb_2">Milisa Geui</h3>
-                      <p class="mb-0 cs_accent_color">Volunteer</p>
+                      <h3 class="cs_fs_21 cs_semibold cs_mb_2">Nitin Sonegara</h3>
+                      <p class="mb-0 cs_accent_color">Prestine ventures pvt ltd</p>
                     </div>
                   </div>
-                  <blockquote class="cs_fs_18 cs_mb_45">I particularly appreciate the emphasis on practical tips for sustainable living. It's refreshing to find a place that not only highlights the issues but also provides solutions.</blockquote>
+                  <blockquote class="cs_fs_18 cs_mb_45">
+                    I love being part of a community that cares about the planet, and Nemistar is one of them. Their product quality is excellent — sturdy, reliable, and completely eco-friendly. It’s refreshing to see a company so committed to sustainability without compromising on service. Their team is responsive, professional, and always delivers on time.
+                  </blockquote>
                   <div class="cs_rating cs_accent_color" data-rating="5">
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
@@ -1201,6 +1207,26 @@ Using compostable bags is a simple yet powerful way to live more sustainably and
     </div>
     <!-- End Scroll Up Button -->
     <!-- Script -->
+     <script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Only run if a hash is present in the URL
+  if (window.location.hash === "#faq") {
+    // Prevent default jump
+    window.scrollTo(0, 0);
+
+    // Wait for everything to load (images, sliders, etc.)
+    setTimeout(function () {
+      const faq = document.querySelector("#faq");
+      if (faq) {
+        const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+        const top = faq.getBoundingClientRect().top + window.scrollY  ;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 100); // you can increase if your hero takes longer to load
+  }
+});
+</script>
+
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/jquery.slick.min.js"></script>
     <script src="assets/js/odometer.js"></script>
