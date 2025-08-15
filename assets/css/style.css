@@ -54,7 +54,7 @@
 ----------------------------------------------------------------*/
 :root {
   --white-color: #fff;
-  --heading-color: #205635;
+  --heading-color: #22382b;
   --body-color: #296c42;
   --accent-color: #4baf47;
   --dark-blue-color: #046d3a;
@@ -8759,4 +8759,32 @@ canvas {
   height: 500px;
   overflow: hidden;
   background-color: white;
+}
+
+.why-nemister-right-image {
+  width: 30%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .why-nemister-right-image {
+    width: 0%;
+    display: none;
+  }
+}
+
+.why-nemistar-features {
+  width: 65%;
+}
+
+@media (max-width: 1200px) {
+  .why-nemistar-features {
+    width: 80%;
+  }
+}
+
+header .container {
+  max-width: 100%;
+  padding: 0 30px;
 }
