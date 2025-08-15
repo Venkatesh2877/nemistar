@@ -274,7 +274,7 @@
     padding: 0;
     font-size: 0;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       height: 6px;
       width: 6px;
@@ -376,7 +376,7 @@
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 20px 30px;
-  justify-content: space-between;
+  justify-content: center;
   .cs_section_heading.cs_style_1 {
     flex: none;
     max-width: 60%;

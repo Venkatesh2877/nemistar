@@ -2526,12 +2526,12 @@ label {
   }
 }
 .cs_page_heading {
-  height: 600px;
+  height: 300px;
   padding: 120px 0 50px;
 }
 @media (max-width: 991px) {
   .cs_page_heading {
-    height: 420px;
+    height: 220px;
   }
 }
 .cs_page_heading .breadcrumb-item + .breadcrumb-item::before {
@@ -4065,7 +4065,7 @@ label {
   gap: 20px 30px;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: center;
 }
 .cs_slider_heading_1 .cs_section_heading.cs_style_1 {
   -webkit-box-flex: 0;
@@ -5980,7 +5980,7 @@ label {
   .cs_hero.cs_style_1 .cs_hero_thumb {
     margin-top: 35px;
     position: absolute;
-    right: 0;
+    right: 50px;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -6831,6 +6831,7 @@ label {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  min-height: 100px;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
@@ -8787,4 +8788,14 @@ canvas {
 header .container {
   max-width: 100%;
   padding: 0 30px;
+}
+
+.cs_testimonial {
+  blockquote {
+    min-height: 170px;
+  }
+}
+
+.cs_post_title {
+  min-height: 120px;
 }
