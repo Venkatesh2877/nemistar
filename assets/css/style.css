@@ -53,11 +53,11 @@
 ** All Variable
 ----------------------------------------------------------------*/
 :root {
-  --white-color: #fff;
-  --heading-color: #22382b;
-  --body-color: #296c42;
-  --accent-color: #4baf47;
-  --dark-blue-color: #046d3a;
+  --white-color: #f4efe9;
+  --heading-color: #223325;
+  --body-color: #526d4b;
+  --accent-color: #526d4b;
+  --dark-blue-color: #818f80;
   --gray-color: #f4f3ef;
   --border-color: #d9d9d9;
   --heading-font: "Encode Sans Condensed", serif;
@@ -4754,6 +4754,14 @@ label {
 .cs_site_branding {
   display: inline-block;
 }
+
+.cs_site_branding img {
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+  padding: 20px;
+}
+
 .cs_site_branding + .cs_nav {
   margin-left: 80px;
 }
