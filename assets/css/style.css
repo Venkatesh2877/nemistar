@@ -2029,6 +2029,14 @@ hr {
   color: var(--accent-color);
 }
 
+.cs-gold-color {
+  color: #caab65;
+}
+
+.cs_gold_color_bg {
+  background-color: #caab65;
+}
+
 .cs_white_bg {
   background-color: var(--white-color);
 }
@@ -2046,7 +2054,15 @@ hr {
 }
 
 .cs_gray_bg_2 {
-  background-color: rgba(75, 175, 71, 0.05);
+  background-color: #d8e0d5;
+}
+
+.cs_gray_bg_3 {
+  background-color: #acb8ab;
+}
+
+.cs_gray_bg_4 {
+  background-color: var(--body-color);
 }
 
 .cs_accent_bg {
@@ -4581,7 +4597,7 @@ label {
   opacity: 0;
 }
 .cs_side_header .cs_side_header_in {
-  width: 100%;
+  width: 50%;
   height: 100vh;
   background-color: var(--white-color);
   -webkit-box-flex: 0;
@@ -4589,7 +4605,7 @@ label {
   flex: none;
   margin-left: auto;
   overflow: auto;
-  padding: 70px 50px 50px 50px;
+  padding: 30px 50px 50px 50px;
   position: relative;
   z-index: 2;
   right: -500px;
@@ -4756,7 +4772,7 @@ label {
 }
 
 .cs_site_branding img {
-  width: 300px;
+  width: 150px;
   height: 100%;
   object-fit: cover;
   padding: 20px;
@@ -5312,6 +5328,10 @@ label {
 }
 .cs_footer_widget_menu li:not(:last-child) {
   margin-bottom: 10px;
+}
+
+.cs_footer_text_widget img {
+  width: 150px;
 }
 
 .cs_footer_text_widget p {
@@ -6794,7 +6814,7 @@ label {
 .cs_post.cs_style_1 {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  background-color: #fff;
+  background-color: var(--white-color);
 }
 .cs_post.cs_style_1 .cs_post_info {
   padding: 24px 30px 30px;

@@ -104,13 +104,13 @@
     opacity: 0;
   }
   .cs_side_header_in {
-    width: 100%;
+    width: 50%;
     height: 100vh;
     background-color: var(--white-color);
     flex: none;
     margin-left: auto;
     overflow: auto;
-    padding: 70px 50px 50px 50px;
+    padding: 30px 50px 50px 50px;
     position: relative;
     z-index: 2;
     right: -500px;
