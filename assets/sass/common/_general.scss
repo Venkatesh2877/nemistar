@@ -60,19 +60,19 @@
   }
 }
 .cs_fs_70 {
-  font-size: 70px;
+  font-size: 50px;
   line-height: 1.28em;
   @media (max-width: 1400px) {
-    font-size: 62px;
+    font-size: 42px;
   }
   @media (max-width: 1199px) {
-    font-size: 56px;
+    font-size: 36px;
   }
   @media (max-width: 991px) {
-    font-size: 46px;
+    font-size: 26px;
   }
   @media (max-width: 575px) {
-    font-size: 42px;
+    font-size: 22px;
   }
 }
 
@@ -937,11 +937,11 @@ label {
 .cs_funfact_1_list {
   display: flex;
   align-items: center;
-  gap: 20px 50px;
+  gap: 20px 150px;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   @media (max-width: 1199px) {
-    gap: 20px 30px;
+    gap: 20px 150px;
   }
   @media (max-width: 991px) {
     gap: 20px 0px;
@@ -1020,8 +1020,9 @@ label {
     position: absolute;
   }
   .cs_shape_position_1 {
-    right: 0;
-    bottom: 25%;
+    right: -18.4%;
+    top: 0%;
+    opacity: 0.2;
   }
   .cs_shape_position_2 {
     right: 0;
