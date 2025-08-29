@@ -5283,7 +5283,7 @@ label {
   display: -ms-flexbox;
   display: flex;
   gap: 50px 80px;
-  padding: 90px 0;
+  padding: 20px 0;
 }
 @media (max-width: 1400px) {
   .cs_footer_row {
@@ -5300,7 +5300,7 @@ label {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: 50px 40px;
-    padding: 60px 0;
+    padding: 20px 0;
   }
 }
 .cs_footer_row .cs_footer_col {
@@ -5913,7 +5913,7 @@ label {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 95px 90px;
+  padding: 45px;
   gap: 30px;
   position: relative;
   z-index: 2;
