@@ -10,7 +10,7 @@
   background-color: #fff;
   z-index: 99999;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     width: 100%;
@@ -21,13 +21,24 @@
   }
   .cs_preloader_shape {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
+
+    img {
+      width: 40%;
+    }
+
     @media (max-width: 991px) {
       display: none;
     }
   }
+
   .cs_preloader_shape_2 {
     position: absolute;
     left: 0;

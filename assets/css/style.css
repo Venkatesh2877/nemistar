@@ -281,10 +281,20 @@ textarea {
 }
 .cs_preloader .cs_preloader_shape {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
 }
+
+.cs_preloader .cs_preloader_shape img {
+  width: 40%;
+}
+
 @media (max-width: 991px) {
   .cs_preloader .cs_preloader_shape {
     display: none;
