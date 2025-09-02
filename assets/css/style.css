@@ -4630,6 +4630,7 @@ label {
 @media (max-width: 450px) {
   .cs_side_header .cs_side_header_in {
     padding: 70px 50px 50px 20px;
+    width: 85%;
   }
 }
 .cs_side_header .cs_side_header_heading {
@@ -4746,7 +4747,7 @@ label {
 .cs_sticky_header {
   position: fixed !important;
   width: 100%;
-  z-index: 999;
+  z-index: 599;
 }
 .cs_sticky_header .cs_top_header_in {
   overflow: hidden;
@@ -4787,16 +4788,15 @@ label {
 }
 
 .cs_site_branding img {
-  width: 309px;
-  height: 100%;
+  width: 10rem;
+  /* height: 100%; */
   object-fit: cover;
-  padding: 20px;
+  padding: 0px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 374px) {
   .cs_site_branding img {
-    width: 170px !important;
-    padding: 0 !important;
+    width: 6rem !important;
   }
 }
 
@@ -6068,11 +6068,7 @@ label {
     margin-bottom: 40px;
   }
 }
-@media (min-width: 992px) {
-  .cs_hero.cs_style_1 .cs_hero_thumb_right {
-    padding-top: 14%;
-  }
-}
+
 .cs_hero.cs_style_1 .cs_rotate_text_box {
   position: absolute;
   top: 50%;
@@ -8913,6 +8909,12 @@ header .container {
   padding-top: 40%;
 }
 
+@media (max-width: 992px) {
+  .cs_hero_thumb_right {
+    padding-top: 20%;
+  }
+}
+
 .custom_shadow {
   -webkit-box-shadow: 18px 31px 17px -22px rgba(110, 110, 110, 1);
   -moz-box-shadow: 18px 31px 17px -22px rgba(110, 110, 110, 1);
@@ -8923,10 +8925,11 @@ header .container {
 
 .product-popup-overlay {
   position: fixed;
+
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.6);
   display: none; /* hidden by default */
   justify-content: center;
@@ -8935,13 +8938,15 @@ header .container {
 
 /* Popup Box */
 .product-popup {
+  overflow-y: auto;
+  height: 100%;
   background: #fff;
   padding: 40px;
   border-radius: 10px;
   width: 60%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
-  z-index: 1000;
+  z-index: 700;
   position: relative;
 }
 
@@ -8959,6 +8964,30 @@ header .container {
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .product-popup {
+    width: 90%;
+    padding: 30px 20px;
+    height: 90%;
+    top: 5%;
+  }
+  .product-popup h2 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .product-close-btn {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    padding: 1px 6px;
+    border: none;
+    background: crimson;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 @keyframes fadeIn {

@@ -179,7 +179,7 @@
       <div class="container">
         <div class="cs_hero_thumb " >
           <div class="cs_hero_thumb_left" style="padding-top: 20%;"><img src="assets/img/nature/hero_img_1.jpg" alt="Thumb"></div>
-          <div class="cs_hero_thumb_right " style="padding-top: 40%;"><img src="assets/img/nature/hero_img_2.jpg" class="custom_shadow" alt="Thumb"></div>
+          <div class="cs_hero_thumb_right "><img src="assets/img/nature/hero_img_2.jpg" class="custom_shadow" alt="Thumb"></div>
           <div class="cs_rotate_text_box cs_bg_filed cs_center" data-src="assets/img/nature/hero_rotate_text_bg.svg">
             <img src="assets/img/nature/download.png" alt="" style="width: 85% ;height: 85%">
           </div>
@@ -431,8 +431,8 @@
     </div>
     <!-- Start Services Section -->
     <section class="cs_half_bg_wrap" id="services">
-      <div class="cs_height_25"></div>
       <div class="cs_half_bg_top cs_accent_bg cs_bg_filed" data-src="assets/img/nature/service_bg.svg"></div>
+      <div style="height: 30px; width: 100%; background: linear-gradient(to bottom, #526d4b, transparent);"></div>
       <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
         <div class="cs_section_heading cs_style_1 text-center">
           <h3 class="cs_fs_21 cs_semibold cs_white_color cs_mb_13 wow fadeIn" data-wow-duration="0.8s" data-wow-delay="0.25s">Products</h3>
@@ -638,7 +638,6 @@
               <button class="product-close-btn" onclick="closePopup()">X</button>
             </div>
           </div>
-          <div class="cs_height_50 cs_height_lg_40"></div>
           <!-- <div class="cs_pagination cs_style_2" style="z-index: 1;"></div> -->
         </div>
       </div>
@@ -739,14 +738,13 @@
             </div>
           </div>
         </div>
-          <div class="cs_height_50 cs_height_lg_50" style="background-image: linear-gradient(white, rgba(250, 251, 252, 1)), url('assets/img/nature/service_bg.svg')"></div>
+         <div class="cs_height_50 cs_height_lg_50" style="background-image: linear-gradient(white, rgba(250, 251, 252, 1)), url('assets/img/nature/service_bg.svg')"></div>
 
         </div>
     </section>
     <!-- End Donation Section -->
     <!-- Start Testimonial Section -->
     <section class="cs_half_bg_wrap">
-      <div class="cs_height_25 cs_height_lg_40"></div>
       <div class="cs_half_bg_top cs_bg_filed" style="height: 100%; width: 100%; z-index: -2; background-image: linear-gradient(rgba(250, 251, 252, 1 ), rgba(82, 109, 75, 1)), url('assets/img/nature/service_bg.svg')" ></div>
       <div class="cs_half_bg_top cs_accent_bg_linear_gradient cs_bg_filed" style="height: 100%; width: 100%; background-color: transparent; z-index: -1; position: absolute; top: 0; left: 0; right: 0; bottom: 0;" data-src="assets/img/nature/service_bg.svg"></div>
       <div class="cs_slider cs_style_1 cs_slider_gap_24 cs_ptb_12" style="padding: 30px 0 100px 0;">
@@ -1062,7 +1060,7 @@
 
       <!-- Start CTA Section -->
     <section class="cs_bg_filed text-center" style="position: relative; ">
-      <img src="assets/img/be_a_part2.png" alt="CTA Background" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 43vh; z-index: -1; aspect-ratio: 16/5;">
+      <img src="assets/img/be_a_part2.png" alt="CTA Background" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 45vh; z-index: -1; aspect-ratio: 16/5; object-fit: cover;">
       <div class="cs_height_30 "></div>
       <div class="container">
         <div class="row">
@@ -1225,6 +1223,7 @@
             </i>
           </a>`;
           document.getElementById("popupOverlay").style.display = "flex";
+          document.body.style.overflow = "hidden";
         });
       }
   
