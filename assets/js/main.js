@@ -159,48 +159,35 @@
   function slickInit() {
     if ($.exists(".cs_slider")) {
       $(".cs_slider").each(function () {
-        // Slick Variable
-        var $ts = $(this).find(".cs_slider_container");
-        var $slickActive = $(this).find(".cs_slider_wrapper");
-        // Auto Play
+        var $slider = $(this);
+        var $ts = $slider.find(".cs_slider_container");
+        var $slickActive = $slider.find(".cs_slider_wrapper");
+
         var autoPlayVar = parseInt($ts.attr("data-autoplay"), 10);
-        // Auto Play Time Out
-        var autoplaySpdVar = 3000;
-        if (autoPlayVar > 1) {
-          autoplaySpdVar = autoPlayVar;
-          autoPlayVar = 1;
-        }
-        // Slide Change Speed
+        var autoplaySpdVar = autoPlayVar > 1 ? autoPlayVar : 3000;
+        if (autoPlayVar > 1) autoPlayVar = 1;
+
         var speedVar = parseInt($ts.attr("data-speed"), 10);
-        // Slider Loop
         var loopVar = Boolean(parseInt($ts.attr("data-loop"), 10));
-        // Slider Center
         var centerVar = Boolean(parseInt($ts.attr("data-center"), 10));
-        // Variable Width
         var variableWidthVar = Boolean(
           parseInt($ts.attr("data-variable-width"), 10)
         );
-        // Pagination
-        var paginaiton = $(this)
+        var paginaiton = $slider
           .find(".cs_pagination")
           .hasClass("cs_pagination");
-        // Slide Per View
+
         var slidesPerView = $ts.attr("data-slides-per-view");
-        if (slidesPerView == 1) {
-          slidesPerView = 1;
-        }
-        if (slidesPerView == "responsive") {
-          var slidesPerView = parseInt($ts.attr("data-add-slides"), 10);
+        if (slidesPerView === "responsive") {
+          slidesPerView = parseInt($ts.attr("data-add-slides"), 10);
           var lgPoint = parseInt($ts.attr("data-lg-slides"), 10);
           var mdPoint = parseInt($ts.attr("data-md-slides"), 10);
           var smPoint = parseInt($ts.attr("data-sm-slides"), 10);
           var xsPoing = parseInt($ts.attr("data-xs-slides"), 10);
         }
-        // Fade Slider
-        var fadeVar = parseInt($($ts).attr("data-fade-slide"));
-        fadeVar === 1 ? (fadeVar = true) : (fadeVar = false);
 
-        // Slick Active Code
+        var fadeVar = parseInt($ts.attr("data-fade-slide")) === 1;
+
         $slickActive.slick({
           autoplay: autoPlayVar,
           dots: paginaiton,
@@ -210,39 +197,54 @@
           autoplaySpeed: autoplaySpdVar,
           centerMode: centerVar,
           fade: fadeVar,
-          prevArrow: $(this).find(".cs_left_arrow"),
-          nextArrow: $(this).find(".cs_right_arrow"),
-          appendDots: $(this).find(".cs_pagination"),
+          prevArrow: $slider.find(".cs_slider_prev"),
+          nextArrow: $slider.find(".cs_slider_next"),
+          appendDots: $slider.find(".cs_pagination"),
           slidesToShow: slidesPerView,
           variableWidth: variableWidthVar,
           swipeToSlide: true,
           responsive: [
-            {
-              breakpoint: 1600,
-              settings: {
-                slidesToShow: lgPoint,
-              },
-            },
-            {
-              breakpoint: 1200,
-              settings: {
-                slidesToShow: mdPoint,
-              },
-            },
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: smPoint,
-              },
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: xsPoing,
-              },
-            },
+            { breakpoint: 1600, settings: { slidesToShow: lgPoint } },
+            { breakpoint: 1200, settings: { slidesToShow: mdPoint } },
+            { breakpoint: 992, settings: { slidesToShow: smPoint } },
+            { breakpoint: 768, settings: { slidesToShow: xsPoing } },
           ],
         });
+
+        function updateProductTitle(title) {
+          var $titleEl = $slider.find(".cs_slider_title");
+
+          // Fade out
+          $titleEl.css("opacity", 0);
+
+          // Change text halfway through fade-out
+          setTimeout(function () {
+            $titleEl.text(title);
+            $titleEl.css("opacity", 1);
+          }, speedVar / 2);
+        }
+
+        $slickActive.on(
+          "beforeChange",
+          function (event, slick, currentSlide, nextSlide) {
+            var $nextSlide = $(slick.$slides[nextSlide]);
+            var title = $nextSlide.find("h2").text();
+            updateProductTitle(title);
+          }
+        );
+
+        $slickActive.on("init", function (event, slick) {
+          var $currentSlide = $(slick.$slides[slick.slickCurrentSlide()]);
+          var title = $currentSlide.find("h2").text();
+          updateProductTitle(title);
+        });
+
+        if ($slickActive.hasClass("slick-initialized")) {
+          var slickObj = $slickActive.slick("getSlick");
+          var $currentSlide = $(slickObj.$slides[slickObj.slickCurrentSlide()]);
+          var title = $currentSlide.find("h2").text();
+          updateProductTitle(title);
+        }
       });
     }
   }
