@@ -8843,14 +8843,14 @@ canvas {
   background-color: white;
 }
 
-.why-nemister-right-image {
+.why-nemistar-right-image {
   width: 30%;
   height: 100%;
   object-fit: cover;
 }
 
 @media (max-width: 1200px) {
-  .why-nemister-right-image {
+  .why-nemistar-right-image {
     width: 0%;
     display: none;
   }
