@@ -1080,7 +1080,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-10 offset-xl-1">
-            <h2 class="cs_white_color cs_fs_51 cs_mb_50 cs_mb_lg_40">Be part of a Greener Future Together, We Make a Difference</h2>
+            <h2 class="cs_white_color cs_fs_51 cs_mb_50 cs_mb_lg_40">Ready to make a switch</h2>
             <a href="partner.html" class="cs_btn cs_style_1 wow fadeInDown" data-wow-duration="0.8s" data-wow-delay="0.25s">
               Let’s partner up!
               <i>
@@ -1196,11 +1196,11 @@
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
+  <script>
       function openPopup(id) {
         console.log(id);
 
-        fetch("assets/js/product.data.json")
+    fetch("assets/js/product.data.json")
         .then(res => res.json())
         .then(data => {
           const product = data.find(product => product.id === id);
@@ -1219,7 +1219,7 @@
                 6.81264 16.974C6.15491 17.0776 5.60947 16.8704 5.19237 16.3782C3.69508 14.6116 2.20849 12.8399 0.716557 11.0681C0.433143 10.7469 0.133686 10.4257 0.0534744 9.98539C0.0267372 9.85587 0.0160423 
                 9.73154 0 9.62275Z" fill="currentColor"/></svg>
               </i>
-              <p class="mb-0">${point}</p>
+                  <p class="mb-0">${point}</p>
             </li>`).join("")}</ul>`;
           if (product.application && product.application.trim() !== "") {
             document.getElementById("popupApplication").innerHTML = `<p class="my-4"><strong>Application:</strong> ${product.application}</p>`;
@@ -1237,14 +1237,14 @@
               </svg>
             </i>
           </a>`;
-          document.getElementById("popupOverlay").style.display = "flex";
+        document.getElementById("popupOverlay").style.display = "flex";
           document.body.style.overflow = "hidden";
-        });
-      }
-  
-      function closePopup() {
-        document.getElementById("popupOverlay").style.display = "none";
-      }
-    </script>
+      });
+  }
+
+  function closePopup() {
+    document.getElementById("popupOverlay").style.display = "none";
+  }
+</script>
   </body>
 </html>

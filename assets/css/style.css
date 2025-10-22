@@ -6036,7 +6036,7 @@ label {
 }
 @media (min-width: 992px) {
   .cs_hero.cs_style_1 {
-    height: 76vh;
+    height: 100vh;
     /* min-height: 750px;
     max-height: 750px; */
   }
@@ -6090,6 +6090,12 @@ label {
     margin-bottom: 40px;
   }
 }
+
+/* @media (min-width: 992px) {
+  .cs_hero.cs_style_1 .cs_hero_thumb_right {
+    padding-top: 14%;
+  }
+} */
 
 .cs_hero.cs_style_1 .cs_rotate_text_box {
   position: absolute;
@@ -8923,12 +8929,12 @@ header .container {
   }
 }
 
-.cs_hero_thumb_left {
+/* .cs_hero_thumb_left {
   padding-top: 20%;
-}
+} */
 
 .cs_hero_thumb_right {
-  padding-top: 30%;
+  padding-top: 10%;
 }
 
 @media (max-width: 992px) {
@@ -8949,31 +8955,33 @@ header .container {
 
 /* product popup */
 
+body.popup-open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
 .product-popup-overlay {
   position: fixed;
-
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  display: none; /* hidden by default */
-  justify-content: center;
+  display: none;
   align-items: center;
+  justify-content: center;
+  z-index: 600;
 }
 
 /* Popup Box */
 .product-popup {
+  max-height: 90vh;
   overflow-y: auto;
-  height: 90%;
-  top: 5%;
   background: #fff;
   padding: 40px;
   border-radius: 10px;
   width: 60%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
-  z-index: 700;
   position: relative;
 }
 
@@ -8996,24 +9004,16 @@ header .container {
   .product-popup {
     width: 90%;
     padding: 30px 20px;
-    height: 90%;
-    top: 5%;
+    max-height: 90vh;
   }
   .product-popup h2 {
-    margin-top: 0;
     font-size: 24px;
   }
 
   .product-close-btn {
-    position: absolute;
     top: 1%;
     right: 2%;
     padding: 1px 9px;
-    border: none;
-    background: #caab65;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
   }
 }
 
