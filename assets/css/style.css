@@ -1063,6 +1063,9 @@ textarea {
   .cs_height_150 {
     height: 150px;
   }
+  .cs_height_200 {
+    min-height: 140px;
+  }
 }
 @media screen and (max-width: 991px) {
   .cs_mb_lg_1 {
@@ -1695,6 +1698,9 @@ textarea {
   .cs_height_lg_150 {
     height: 150px;
   }
+  .cs_height_lg_200 {
+    height: 250px;
+  }
 }
 /*--------------------------------------------------------------
   4. General
@@ -1748,6 +1754,16 @@ textarea {
 @media (max-width: 1400px) {
   .cs_fs_28 {
     font-size: 26px;
+  }
+}
+
+.cs_fs_32 {
+  font-size: 32px;
+  line-height: 1.32em;
+}
+@media (max-width: 772px) {
+  .cs_fs_32 {
+    font-size: 19px;
   }
 }
 
