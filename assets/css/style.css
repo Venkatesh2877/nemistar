@@ -1778,7 +1778,7 @@ textarea {
 }
 @media (max-width: 991px) {
   .cs_fs_38 {
-    font-size: 30px;
+    font-size: 24px;
   }
 }
 
@@ -2254,6 +2254,7 @@ label {
   padding: 10px 30px;
   outline: none;
   background-color: var(--accent-color);
+  border-radius: 5px;
   color: #fff;
   gap: 10px;
   border: none;
@@ -3769,7 +3770,7 @@ label {
   -webkit-box-flex: 0;
   -ms-flex: none;
   flex: none;
-  background-color: var(--heading-color);
+  background-color: #c7c9c7;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   color: #fff;
@@ -3792,15 +3793,19 @@ label {
   right: 0;
 }
 .cs_slider_arrows.cs_style_1.cs_type_1 .cs_left_arrow,
+.cs_slider_arrows.cs_style_1.cs_type_1 .cs_left_arrow,
 .cs_slider_arrows.cs_style_1.cs_type_1 .cs_right_arrow {
-  background-color: transparent;
-  color: var(--heading-color);
+  background-color: #fffffccc;
+  border: 1px solid #526d4b;
+  padding: 17px 10px;
+  color: #526d4b;
   height: initial;
   width: initial;
 }
 .cs_slider_arrows.cs_style_1.cs_type_1 .cs_left_arrow:hover,
 .cs_slider_arrows.cs_style_1.cs_type_1 .cs_right_arrow:hover {
-  color: var(--accent-color);
+  color: #fff;
+  background-color: #455a3e;
 }
 .cs_slider_arrows.cs_style_1.cs_type_2 .cs_left_arrow:hover,
 .cs_slider_arrows.cs_style_1.cs_type_2 .cs_right_arrow:hover {
@@ -6868,6 +6873,8 @@ label {
 .cs_post.cs_style_1 {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  border-radius: 12px;
+  overflow: hidden;
   background-color: var(--white-color);
 }
 .cs_post.cs_style_1 .cs_post_info {
@@ -7126,6 +7133,8 @@ label {
 ----------------------------------------------------------------*/
 .cs_testimonial.cs_style_1 {
   padding: 50px 49px;
+  border-radius: 12px;
+  overflow: hidden;
   position: relative;
 }
 @media (max-width: 1199px) {
@@ -8849,10 +8858,17 @@ canvas {
   background-color: white;
 }
 
+border_24 {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
 .why-nemistar-right-image {
   width: 30%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 @media (max-width: 1200px) {
@@ -8906,7 +8922,8 @@ header .container {
 }
 
 .why-use-composite {
-  /* border-radius: 20px; */
+  border-radius: 12px;
+
   p {
     min-height: 160px;
   }
@@ -8984,6 +9001,14 @@ body.popup-open {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
   position: relative;
+}
+
+.product-popup::-webkit-scrollbar {
+  display: none;
+}
+.product-popup {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .product-popup h2 {
@@ -9093,5 +9118,42 @@ body.popup-open {
 @media (max-width: 768px) {
   .certifications-image {
     height: 10rem;
+  }
+}
+
+.track_record_section {
+  background-size: cover;
+  background-position: center;
+  padding: 30px 0;
+  margin: 0px 100px;
+  border-radius: 24px;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .track_record_section {
+    margin: 0px 20px;
+    padding: 24px 0;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 575px) {
+  .track_record_section {
+    margin: 0px 5px;
+    padding: 16px 0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+.cs_fs_10 {
+  font-size: 18px;
+}
+
+/*/ Hide .cs_arrow_wrap on mobile screens */
+@media (max-width: 767px) {
+  .cs_arrow_wrap {
+    display: none !important;
   }
 }
