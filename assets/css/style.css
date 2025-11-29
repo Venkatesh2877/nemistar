@@ -8906,6 +8906,7 @@ header .container {
 }
 
 .why-use-composite {
+  /* border-radius: 20px; */
   p {
     min-height: 160px;
   }
