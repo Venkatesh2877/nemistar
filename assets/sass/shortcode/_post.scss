@@ -8,6 +8,8 @@
     padding: 24px 30px 30px;
     border: 1px solid transparent;
     transition: all 0.4s ease;
+    border-radius: 12px;
+    overflow: hidden;
     @media (max-width: 1199px) {
       padding: 24px 25px 30px;
     }

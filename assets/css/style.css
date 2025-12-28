@@ -2203,6 +2203,7 @@ label {
 }
 .cs_accordians.cs_style_1 .cs_accordian {
   background-color: #fff;
+  border-radius: 12px;
 }
 .cs_accordians.cs_style_1 .cs_accordian.active .cs_accordian_head {
   /* pointer-events: none; */
@@ -2476,8 +2477,9 @@ label {
 }
 
 .cs_video_block.cs_style_1 {
-  height: 860px;
+  height: 450px;
   width: 100%;
+  border-radius: 12px;
   position: relative;
 }
 @media (max-width: 991px) {
@@ -2579,6 +2581,7 @@ label {
 .cs_page_heading {
   height: 300px;
   padding: 120px 0 50px;
+  border-radius: 0px 0px 12px 12px;
 }
 @media (max-width: 991px) {
   .cs_page_heading {
@@ -5469,6 +5472,7 @@ label {
 }
 
 .cs_footer.cs_style_1 {
+  border-radius: 12px 12px 0px 0px;
   padding-top: 1px;
   margin-top: 134px;
 }
@@ -5476,7 +5480,7 @@ label {
   margin-top: 0;
 }
 .cs_footer.cs_style_1 .cs_newsletter.cs_style_2 {
-  margin-top: -134px;
+  margin-top: -80px;
 }
 .cs_footer.cs_style_1 .cs_social_btns.cs_style_1 {
   font-size: 14px;
@@ -6042,6 +6046,7 @@ label {
 @media (min-width: 992px) {
   .cs_hero.cs_style_1 {
     height: 100vh;
+    border-radius: 0px 0px 12px 12px;
     /* min-height: 750px;
     max-height: 750px; */
   }
@@ -6875,7 +6880,7 @@ label {
   transition: all 0.4s ease;
   border-radius: 12px;
   overflow: hidden;
-  background-color: var(--white-color);
+  background-color: #ffffff;
 }
 .cs_post.cs_style_1 .cs_post_info {
   padding: 24px 30px 30px;
@@ -7270,6 +7275,7 @@ label {
 .cs_team.cs_style_1 .cs_team_thumb {
   width: 280px;
   height: 280px;
+  border-radius: 12px;
   -webkit-box-flex: 0;
   -ms-flex: none;
   flex: none;
@@ -7302,6 +7308,8 @@ label {
   -o-object-fit: cover;
   object-fit: cover;
   -webkit-transition: all 0.8s ease;
+  border-radius: 12px;
+  overflow: hidden;
   transition: all 0.8s ease;
 }
 .cs_team.cs_style_1 .cs_team_social_list {
@@ -7324,6 +7332,8 @@ label {
 .cs_team.cs_style_1:hover .cs_team_thumb img {
   -webkit-transform: scale(1.06) translate(0px, 8px);
   transform: scale(1.06) translate(0px, 8px);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .cs_team.cs_style_2 .cs_team_thumb {
@@ -8900,18 +8910,22 @@ header .container {
 }
 
 .cs_post_title {
-  min-height: 40px;
+  min-height: 120px;
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 768px) {
   .cs_post_title {
     min-height: 190px;
   }
 }
 
+.cs_post_title_2 {
+  min-height: 80px;
+}
+
 @media (min-width: 768px) {
   .cs_post_title_2 {
-    min-height: 150px;
+    min-height: 100px;
   }
 }
 
@@ -9105,6 +9119,7 @@ body.popup-open {
 
 .certifications-image {
   height: 20rem;
+  border-radius: 12px;
   overflow: hidden;
   width: 23%;
 
@@ -9156,4 +9171,17 @@ body.popup-open {
   .cs_arrow_wrap {
     display: none !important;
   }
+}
+
+.cs_newsletter {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.border-radius-12 {
+  border-radius: 12px;
+}
+
+.cs_post {
+  border: 1px solid #d3d3d3;
 }
