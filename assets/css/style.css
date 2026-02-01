@@ -9196,29 +9196,41 @@ body.popup-open {
 
 .custom_height {
   height: 0px !important;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .custom_height {
     height: 20px !important;
   }
+}
 
-  @media (min-width: 992px) {
+@media (min-width: 992px) {
+  .custom_height {
     height: 50px !important;
   }
 }
 
+/* ---------------- */
+
 .newsletter_style {
   width: 90vw;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .newsletter_style {
     width: 60vw;
   }
 }
 
+/* ---------------- */
+
 .record_style {
   padding: 2px;
   width: 32%;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .record_style {
     padding: 10px;
     width: 180px;
   }
