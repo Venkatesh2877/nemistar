@@ -4636,7 +4636,7 @@ label {
   opacity: 0;
 }
 .cs_side_header .cs_side_header_in {
-  width: 35%;
+  width: 50%;
   height: 100vh;
   background-color: var(--white-color);
   -webkit-box-flex: 0;
