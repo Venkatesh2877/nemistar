@@ -2865,7 +2865,7 @@ label {
 }
 @media (max-width: 991px) {
   .cs_funfact_1_list {
-    gap: 20px 0px;
+    gap: 0px 0px;
   }
   .cs_funfact_1_list .cs_funfact.cs_style_1 {
     width: 50%;
@@ -9211,5 +9211,15 @@ body.popup-open {
 
   @media (min-width: 768px) {
     width: 60vw;
+  }
+}
+
+.record_style {
+  padding: 2px;
+  width: 32%;
+
+  @media (min-width: 768px) {
+    padding: 10px;
+    width: 180px;
   }
 }
