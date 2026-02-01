@@ -3931,7 +3931,7 @@ label {
 }
 @media (max-width: 991px) {
   .cs_pagination.cs_style_1 ul {
-    margin-top: 40px;
+    margin-top: 0px !important;
   }
 }
 .cs_pagination.cs_style_1 li {
@@ -4175,7 +4175,7 @@ label {
     position: initial;
     -webkit-transform: initial;
     transform: initial;
-    margin-top: 40px;
+    margin-top: 0px !important;
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
@@ -4777,7 +4777,7 @@ label {
 .cs_sticky_header {
   position: fixed !important;
   width: 100%;
-  z-index: 599;
+  z-index: 100;
 }
 .cs_sticky_header .cs_top_header_in {
   overflow: hidden;
@@ -9011,10 +9011,18 @@ body.popup-open {
   background: #fff;
   padding: 40px;
   border-radius: 10px;
-  width: 60%;
+  width: 100%;
+  padding: 0px;
+  margin-top: 50px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
   position: relative;
+
+  @media (min-width: 768px) {
+    width: 60%;
+    padding: 30px 20px;
+    max-height: 90vh;
+  }
 }
 
 .product-popup::-webkit-scrollbar {
@@ -9184,4 +9192,24 @@ body.popup-open {
 
 .cs_post {
   border: 1px solid #d3d3d3;
+}
+
+.custom_height {
+  height: 0px !important;
+
+  @media (min-width: 768px) {
+    height: 20px !important;
+  }
+
+  @media (min-width: 992px) {
+    height: 50px !important;
+  }
+}
+
+.newsletter_style {
+  width: 90vw;
+
+  @media (min-width: 768px) {
+    width: 60vw;
+  }
 }
